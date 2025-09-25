@@ -96,64 +96,34 @@ DeviceNetworkEvents
 <img width="1212" alt="image" src="https://github.com/user-attachments/assets/87a02b5b-7d12-4f53-9255-f5e750d0e3cb">
 
 ---
+# Timeline of Events – Tor Browser Usage on `chris-th-win10`
 
-## Chronological Event Timeline 
-
-### 1. File Download - TOR Installer
-
-- **Timestamp:** `2024-11-08T22:14:48.6065231Z`
-- **Event:** The user "employee" downloaded a file named `tor-browser-windows-x86_64-portable-14.0.1.exe` to the Downloads folder.
-- **Action:** File download detected.
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
-
-### 2. Process Execution - TOR Browser Installation
-
-- **Timestamp:** `2024-11-08T22:16:47.4484567Z`
-- **Event:** The user "employee" executed the file `tor-browser-windows-x86_64-portable-14.0.1.exe` in silent mode, initiating a background installation of the TOR Browser.
-- **Action:** Process creation detected.
-- **Command:** `tor-browser-windows-x86_64-portable-14.0.1.exe /S`
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
-
-### 3. Process Execution - TOR Browser Launch
-
-- **Timestamp:** `2024-11-08T22:17:21.6357935Z`
-- **Event:** User "employee" opened the TOR browser. Subsequent processes associated with TOR browser, such as `firefox.exe` and `tor.exe`, were also created, indicating that the browser launched successfully.
-- **Action:** Process creation of TOR browser-related executables detected.
-- **File Path:** `C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
-
-### 4. Network Connection - TOR Network
-
-- **Timestamp:** `2024-11-08T22:18:01.1246358Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
-- **Action:** Connection success.
-- **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
-
-### 5. Additional Network Connections - TOR Browser Activity
-
-- **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
-
-### 6. File Creation - TOR Shopping List
-
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
-- **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
+## September 24, 2025 – Installation & Execution
+- **15:13:00 (3:13 PM)** – The user **labuser** executed `tor-browser-windows-x86_64-portable-14.5.7.exe` from the **Downloads** folder. *(Process creation event)*  
+- **15:13:32 (3:13 PM)** – The same installer process was executed again, this time with a **silent install flag (/S)**. This indicates a full installation of Tor Browser was performed without user prompts.  
+- **15:14–15:15 PM (inferred from file events)** – Installation activity created multiple Tor-related files in the Desktop **Tor Browser** directory. A suspicious file named **`tor-shopping-list.txt`** was also created.  
 
 ---
 
-## Summary
+## September 24, 2025 – Tor Browser Network Activity
+- **15:15:00 (3:15 PM)** – The Tor Browser attempted a connection via `firefox.exe` to **127.0.0.1:9150** (local loopback, typical Tor proxy port). This connection failed.  
+- **15:15:08 (3:15 PM)** – The Tor process `tor.exe` successfully established outbound network connections to remote nodes:  
+  - **54.36.101.21:9001** (Tor relay) – Connection established.  
+  - **37.143.61.132:9001** (Tor relay) – Additional successful connection.  
+- **15:16–15:25 PM** – Multiple subsequent successful connections from `tor.exe` to different Tor relay IPs (**188.68.32.21**, etc.) on known Tor ports (9001, 9030, 9050, 9150). These indicate **active Tor Browser usage** and anonymized browsing traffic.  
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+---
+
+## Summary of Events
+- The employee account **labuser** on device **chris-th-win10** **downloaded and installed the Tor Browser** on September 24, 2025.  
+- The installation was run silently (`/S` flag), avoiding prompts, and led to the creation of multiple Tor-related files, including a suspicious file named **`tor-shopping-list.txt`**.  
+- Shortly after installation, **labuser opened the Tor Browser**, which attempted to establish local proxy connections.  
+- The browser then made **successful outbound connections** to multiple known Tor relay nodes on ports commonly associated with Tor (9001, 9150).  
+- These actions confirm that **Tor Browser was actively used** for anonymized network communication on this system.  
 
 ---
 
 ## Response Taken
-
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
-
----
+- **TOR usage was confirmed** on endpoint `chris-th-win10`.  
+- The device was **isolated**.  
+- The user’s **direct manager was notified**.  
